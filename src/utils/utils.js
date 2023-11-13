@@ -72,8 +72,8 @@ export function categorizeDestopView(categorizedItems) {
             }
         }
 
-        for (var i = 0; i < ITEMS_LENGTH; i++) {
-            if (i % 2 === 0) {
+        for (var j = 0; j < ITEMS_LENGTH; j++) {
+            if (j % 2 === 0) {
                 newItemsOrder.push(leftColumn.shift())
             } else {
                 newItemsOrder.push(rightColumn.shift())

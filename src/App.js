@@ -26,7 +26,7 @@ function App() {
 
   // Fetch menu items from backend and set state variables
   const fecthMenuItems = async () => {
-    const response = await fetch('http://localhost:4000/pho-hot');
+    const response = await fetch('https://pho-hot-api.onrender.com/pho-hot');
     const data = await response.json();
 
     const newData = data.slice(1, data.length);
