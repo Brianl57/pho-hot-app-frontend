@@ -20,9 +20,9 @@ export default function HeroMeta() {
         </Box>
         <Box>
             <Text color='brand.800' fontWeight={'bold'}>HOURS</Text>
-            <Text fontSize={breakpoint}>Mon to Friday: 10:00 - 8:00 PM</Text>
-            <Text fontSize={breakpoint}>Closed on Saturday and Sunday</Text>
-            <Text fontSize={breakpoint}>Dine-line stops at 7:30 PM</Text>
+            <Text fontSize={breakpoint}>Mon to Fri: 10AM - 8PM</Text>
+            <Text fontSize={breakpoint}>Closed on Sat & Sun</Text>
+            <Text fontSize={breakpoint}>Dine-in ends at 7:30PM</Text>
         </Box>
     </SimpleGrid>
   )
