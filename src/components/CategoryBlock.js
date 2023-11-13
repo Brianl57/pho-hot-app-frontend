@@ -6,7 +6,7 @@ import ItemDetails from './ItemDetails'
 export default function CategoryBlock( {category, categoryItems } ) {
   
   const breakpoint = {
-    base: '1rem',
+    base: '0.9rem',
     md: '1rem',
     lg: '1rem'
 }

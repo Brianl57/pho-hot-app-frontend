@@ -3,7 +3,7 @@ import React from 'react'
 // 7a7976
 function ItemDetails( { item_name, price, description } ) {
     const breakpoint = {
-        base: '1rem',
+        base: '0.9rem',
         // sm: '1rem', 
         md: '1rem',
         lg: '1rem'

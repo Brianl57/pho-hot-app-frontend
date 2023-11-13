@@ -13,7 +13,7 @@ export default function HeroMeta() {
         <Box>
             <Text color='brand.800' fontWeight={'bold'}>LOCATION</Text>
             <Text fontSize={breakpoint}>6306 San Fernando Rd</Text>
-            <Text fontSize={breakpoint}>Rd Glendale, CA 91201</Text>
+            <Text fontSize={breakpoint}>Glendale, CA 91201</Text>
             <Link target="_blank" href="https://www.google.com/maps?sca_esv=578070544&output=search&q=6306+San+Fernando+Rd+Rd+Glendale,+CA+91201&source=lnms&entry=mc&sa=X&ved=2ahUKEwjWl7mk6Z-CAxX9KlkFHcWqB_8Q0pQJegQIDRAB">
               <Text fontSize={breakpoint}>Google Maps</Text>
             </Link>

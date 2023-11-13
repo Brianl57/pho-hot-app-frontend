@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import HeroSection from './components/HeroSection';
 import MenuSection from './components/MenuSection';
 import { itemsToObject, categorize, categorizeDestopView } from './utils/utils.js';
+import { config } from './Constants.js'
 
 function App() {
 
@@ -19,14 +20,16 @@ function App() {
       setDisplay('desktop');
     }
   }
-  console.log(display)
-  console.log(categoriesDesktop)
   
   window.addEventListener('resize', handleDisplayChange);
+  
+  console.log("Current mode: ", process.env.NODE_ENV)
+  const URL = config.url
 
+  console.log(URL)
   // Fetch menu items from backend and set state variables
   const fecthMenuItems = async () => {
-    const response = await fetch('https://pho-hot-api.onrender.com/pho-hot');
+    const response = await fetch(URL);
     const data = await response.json();
 
     const newData = data.slice(1, data.length);
