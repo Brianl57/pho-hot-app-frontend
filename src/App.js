@@ -23,27 +23,46 @@ function App() {
   
   window.addEventListener('resize', handleDisplayChange);
   
-  console.log("Current mode: ", process.env.NODE_ENV)
   const URL = config.url
 
-  console.log(URL)
-  // Fetch menu items from backend and set state variables
-  const fecthMenuItems = async () => {
-    const response = await fetch(URL);
-    const data = await response.json();
+  // Fetch menu items from backend and set state variables + add to local storage for caching
+useEffect(() => {
+  const storedMenuData = localStorage.getItem('menuData');
+  if (storedMenuData) {
+    // If menu data is already stored, use it directly
+    const parsedMenuData = JSON.parse(storedMenuData);
+    setMenuData(parsedMenuData.menuData);
+    setCategories(parsedMenuData.categories);
+    setCategoriesDesktop(parsedMenuData.categoriesDesktop);
+    console.log('Using cached menu data.');
+  } else {
+    // If menu data is not cached, fetch it from the backend
+    const fetchMenuItems = async () => {
+      const response = await fetch(URL);
+      const data = await response.json();
 
-    const newData = data.slice(1, data.length);
-    const itemsObject = itemsToObject(newData);
-    const categorizedItems = categorize(itemsObject);
-    
-    setMenuData(itemsObject);      
-    setCategories(categorizedItems);
-    setCategoriesDesktop(categorizeDestopView(categorizedItems))
+      const newData = data.slice(1, data.length);
+      const itemsObject = itemsToObject(newData);
+      const categorizedItems = categorize(itemsObject);
+
+      setMenuData(itemsObject);
+      setCategories(categorizedItems);
+      setCategoriesDesktop(categorizeDestopView(categorizedItems));
+
+      // Store menu data in local storage for future use
+      localStorage.setItem(
+        'menuData',
+        JSON.stringify({
+          menuData: itemsObject,
+          categories: categorizedItems,
+          categoriesDesktop: categorizeDestopView(categorizedItems),
+        })
+      );
+    };
+
+    fetchMenuItems();
   }
-
-  useEffect(() => {
-    fecthMenuItems();
-  }, [])
+}, [URL]);
 
 
   return (
