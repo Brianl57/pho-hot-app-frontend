@@ -25,43 +25,22 @@ function App() {
   
   const URL = config.url
 
-  // Fetch menu items from backend and set state variables + add to local storage for caching
+  // Fetch menu items from backend and set state variables
 useEffect(() => {
-  const storedMenuData = localStorage.getItem('menuData');
-  if (storedMenuData) {
-    // If menu data is already stored, use it directly
-    const parsedMenuData = JSON.parse(storedMenuData);
-    setMenuData(parsedMenuData.menuData);
-    setCategories(parsedMenuData.categories);
-    setCategoriesDesktop(parsedMenuData.categoriesDesktop);
-    console.log('Using cached menu data.');
-  } else {
-    // If menu data is not cached, fetch it from the backend
-    const fetchMenuItems = async () => {
-      const response = await fetch(URL);
-      const data = await response.json();
+  const fetchMenuItems = async () => {
+    const response = await fetch(URL);
+    const data = await response.json();
 
-      const newData = data.slice(1, data.length);
-      const itemsObject = itemsToObject(newData);
-      const categorizedItems = categorize(itemsObject);
+    const newData = data.slice(1, data.length);
+    const itemsObject = itemsToObject(newData);
+    const categorizedItems = categorize(itemsObject);
 
-      setMenuData(itemsObject);
-      setCategories(categorizedItems);
-      setCategoriesDesktop(categorizeDestopView(categorizedItems));
-
-      // Store menu data in local storage for future use
-      localStorage.setItem(
-        'menuData',
-        JSON.stringify({
-          menuData: itemsObject,
-          categories: categorizedItems,
-          categoriesDesktop: categorizeDestopView(categorizedItems),
-        })
-      );
-    };
-
-    fetchMenuItems();
+    setMenuData(itemsObject);
+    setCategories(categorizedItems);
+    setCategoriesDesktop(categorizeDestopView(categorizedItems));
   }
+  
+  fetchMenuItems();
 }, [URL]);
 
 
