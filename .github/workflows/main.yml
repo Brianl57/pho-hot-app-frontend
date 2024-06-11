@@ -1,0 +1,29 @@
+name: Build Frontend
+
+on:
+    push:
+        branches:
+        - ci-cd-setup
+
+jobs:
+    build-deploy:
+        name: Build Pho Hot Frontend
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: 21.1.0
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run tests
+              run: npm run test
+
+            - name: Build
+              run: npm run build
+
