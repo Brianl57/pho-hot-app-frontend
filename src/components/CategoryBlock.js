@@ -29,7 +29,7 @@ export default function CategoryBlock( {category, categoryItems } ) {
       {category === 'PHO' && 
       <Box mt='2rem' p={0} color='brand.700'>
         <Text fontStyle='italic' fontSize={breakpoint}>*All soups are served with a plate of sprouts, lemon, green peppers, cilantro, and basil leaves.</Text>
-        <Text fontStyle='italic' fontSize={breakpoint}>+3.50 Extra meat. +2.99 Extra noodle. +4.95 Extra soup. +2.99 Extra veggies. +0.50 Extra onion.</Text>
+        <Text fontStyle='italic' fontSize={breakpoint}>+4.20 Extra meat. +3.90 Extra noodle. +5.90 Extra soup. +3.90 Extra veggies. +0.60 Extra onion.</Text>
       </Box>
       }
     </Box>
